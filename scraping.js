@@ -1,6 +1,6 @@
 const request = require("request");
 const cheerio = require("cheerio");
-var words = require("voca/words");
+let words = require("voca/words");
 request(
   "https://www.worldometers.info/coronavirus/country/cambodia/",
   (err, res, html) => {
