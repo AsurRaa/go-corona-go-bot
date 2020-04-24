@@ -1,0 +1,13 @@
+{
+  "name": "corona-datas-scraping",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/LyhourChhen/corona-datas-scraping.git",
+  "author": "LyhourChhen <ukamilove66@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.2",
+    "voca": "^1.4.0"
+  }
+}
