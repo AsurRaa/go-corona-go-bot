@@ -5,6 +5,9 @@
   "repository": "https://github.com/LyhourChhen/corona-datas-scraping.git",
   "author": "LyhourChhen <ukamilove66@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
     "colors": "^1.4.0",

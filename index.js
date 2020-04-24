@@ -1,4 +1,5 @@
 require("dotenv").config();
+const color = require("colors");
 const Telegraf = require("telegraf");
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
