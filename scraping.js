@@ -19,6 +19,7 @@ const scraping = (country) => {
         data[2] = { recoverd: arrayData[2] };
 
         console.log("retrive data", arrayData);
+        console.log("arraay", data);
       }
     }
   );
