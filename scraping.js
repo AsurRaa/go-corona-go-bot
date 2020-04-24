@@ -1,30 +1,28 @@
 "use strict";
+import request from "request";
+import cheerio from "cheerio";
+import words from "voca/words";
 
-const request = require("request");
-const cheerio = require("cheerio");
-let words = require("voca/words");
-
-const scraping = () => {
-  return request(
-    "https://www.worldometers.info/coronavirus/country/cambodia/",
+const scraping = (country) => {
+  let data = [];
+  request(
+    `https://www.worldometers.info/coronavirus/country/${country}/`,
     (err, res, html) => {
       if (!err && res.statusCode == 200) {
         const $ = cheerio.load(html);
 
-        const data = $(".maincounter-number");
-        const arrayData = words(data.text());
-        console.log(arrayData);
+        let hook = $(".maincounter-number");
+        const arrayData = words(hook.text());
 
-        let newData = [
-          { cases: arrayData[0] },
-          { deaths: arrayData[1] },
-          { recoverd: arrayData[2] },
-        ];
+        data[0] = { cases: arrayData[0] };
+        data[1] = { deaths: arrayData[1] };
+        data[2] = { recoverd: arrayData[2] };
 
-        console.log(JSON.stringify(newData));
+        console.log("retrive data", arrayData);
       }
     }
   );
+  return data;
 };
 
-exports.default = scraping;
+export default scraping;

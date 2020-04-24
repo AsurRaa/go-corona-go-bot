@@ -1,9 +1,6 @@
-"use strict";
-
+import Telegraf from "telegraf";
+import scraping from "./scraping";
 require("dotenv").config();
-const color = require("colors");
-const Telegraf = require("telegraf");
-const scraping = require("./scraping");
 
 const message = `ព័ត៌មានផ្លូវការ អំពី Covid-19 នៅកម្ពុជា 
 
@@ -14,8 +11,10 @@ const message = `ព័ត៌មានផ្លូវការ អំពី Covi
 `;
 
 // run scraping
-scraping();
-console.log(color.red("Scaping Script is running !!!"));
+scraping("cambodia");
+console.log("Scaping Script is running !!!");
+
+console.log("did i get data or not", scraping());
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.start((ctx) => ctx.reply("Welcome"));
