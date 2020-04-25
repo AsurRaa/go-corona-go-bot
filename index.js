@@ -1,5 +1,6 @@
 import Telegraf from "telegraf";
 import scraping from "./scraping";
+import Telegram from "telegraf/telegram";
 require("dotenv").config();
 
 const message = `ព័ត៌មានផ្លូវការ អំពី Covid-19 នៅកម្ពុជា 
