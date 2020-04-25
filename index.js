@@ -13,6 +13,7 @@ const message = `ព័ត៌មានផ្លូវការ អំពី Covi
 
 // run scraping
 scraping("cambodia");
+console.log("console scraping", scraping());
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.start((ctx) => ctx.reply("Welcome"));

@@ -3,8 +3,7 @@ import request from "request";
 import cheerio from "cheerio";
 import words from "voca/words";
 
-const scraping = (country) => {
-  let data = [];
+const scraping = async (country) => {
   request(
     `https://www.worldometers.info/coronavirus/country/${country}/`,
     (err, res, html) => {
@@ -14,16 +13,15 @@ const scraping = (country) => {
         let hook = $(".maincounter-number");
         const arrayData = words(hook.text());
 
-        data[0] = { cases: arrayData[0] };
-        data[1] = { deaths: arrayData[1] };
-        data[2] = { recoverd: arrayData[2] };
+        // data[0] = { cases: arrayData[0] };
+        // data[1] = { deaths: arrayData[1] };
+        // data[2] = { recoverd: arrayData[2] };
+        console.log("arrayData", arrayData);
 
-        console.log("retrive data", arrayData);
-        console.log("arraay", data);
+        return arrayData;
       }
     }
   );
-  return data;
 };
 
 export default scraping;
