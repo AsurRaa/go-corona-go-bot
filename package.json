@@ -6,9 +6,11 @@
   "author": "LyhourChhen <ukamilove66@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --ext js --exec babel-node index.js"
+    "start": "nodemon --ext js --exec babel-node index.js",
+    "test": "nodemon --ext js --exec babel-node scraping.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "cheerio": "^1.0.0-rc.3",
