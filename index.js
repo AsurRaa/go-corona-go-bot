@@ -1,12 +1,16 @@
 import Telegraf from "telegraf";
-import Telegram from "telegraf/telegram";
+import color from "colors";
 import Scraping from "./scraping";
 import { day, today } from "./utils/todayKH";
+import moment from "moment";
+
+const TelegrafInlineMenu = require("telegraf-inline-menu");
 require("dotenv").config();
 
 const main = async () => {
-  let data = await Scraping();
-  console.log("getting data", await Scraping());
+  let country;
+  let data = await Scraping("Cambodia");
+  console.log("data", await Scraping("cambodia"));
   const message = `ព័ត៌មានផ្លូវការ អំពី Covid-19 នៅកម្ពុជា 
   គិតត្រឹម "ថ្ងែ${day[0]}, ${today}"
   - ចំនួនអ្នកឆ្លង៖ " ${data[0].cases} នាក់ "
@@ -14,19 +18,50 @@ const main = async () => {
   - ចំនួនអ្នកស្លាប់៖ " ${data[1].dies} នាក់ "
   `;
 
-  const bot = new Telegraf(process.env.BOT_TOKEN);
+  const renderMessage = async (country) => {
+    let data = await Scraping(country);
+    console.log(`case in ${country}`, await Scraping(country));
+    let today = moment().format("MMMM Do YYYY");
+    return `Today case in ${country} at ${today} : 
+            case : ${data[0].cases}
+            death : ${data[2].recovered}
+            recovered : ${data[1].dies}
+    `;
+  };
+
+  const bot = new Telegraf(process.env.BOT_TOKEN, {
+    telegram: {
+      webhookReply: true,
+    },
+  });
   bot.start((ctx) => ctx.reply("Welcome"));
   bot.help((ctx) => ctx.reply("Send me a sticker"));
   bot.on("sticker", (ctx) => ctx.reply("👍"));
   bot.hears("hi", (ctx) => ctx.reply("Hey there"));
   bot.command("covid", (ctx) => ctx.reply("hi from covid"));
-  bot.hears("corona", (ctx) => ctx.reply(message));
-  bot.command("corona", (ctx) => ctx.reply(message));
-  bot.launch();
-  console.log("bot is starting");
 
-  console.log("telegram is init");
-  const telegram = new Telegram(process.env.BOT_TOKEN);
+  bot.command("lyhour", (ctx) => console.log("context", ctx));
+
+  bot.hears("Corona", (ctx) => ctx.reply(message));
+  bot.command("Corona", (ctx) => ctx.reply(message));
+
+  const menu = new TelegrafInlineMenu((ctx) => `Hey ${ctx.from.first_name}!`);
+  menu.setCommand("menu");
+  menu.simpleButton("Show CODVID-19 Cases in Cambodia Today", "a", {
+    // doFunc: (ctx) => ctx.reply("As am I!"),
+    doFunc: (ctx) => ctx.reply(message),
+  });
+  menu.simpleButton("Another Country", "b", {
+    doFunc: (ctx) => {
+      return ctx.hears(country), ctx.reply(renderMessage(country));
+    },
+  });
+
+  bot.use(menu.init());
+  bot.startPolling();
+  bot.launch();
+
+  console.log(color.red("bot is starting..."));
 };
 
 main();

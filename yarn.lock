@@ -2850,6 +2850,11 @@ supports-color@^7.1.0:
   dependencies:
     has-flag "^4.0.0"
 
+telegraf-inline-menu@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/telegraf-inline-menu/-/telegraf-inline-menu-4.0.1.tgz#a9ed30a9a13e655de18170736ec104f478862c7b"
+  integrity sha512-FEO+qMsbg0pqI1PyMxUVYCskr+4EHSsRf+7SJs5Wdi1XSA5K7AtU9hjujreY/uKn5gUVoRY75Wy/lFnQz2rG1Q==
+
 telegraf@^3.37.0:
   version "3.37.0"
   resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-3.37.0.tgz#f88ae3d4bddac6f479137d4c867489acf3f57b66"

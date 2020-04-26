@@ -3,10 +3,10 @@ import axios from "axios";
 import cheerio from "cheerio";
 import words from "voca/words";
 
-const scarping = async () => {
+const scarping = async (country) => {
   let data = [];
   await axios
-    .get("https://www.worldometers.info/coronavirus/country/cambodia/")
+    .get(`https://www.worldometers.info/coronavirus/country/${country}/`)
     .then((res) => {
       const html = res.data;
       const $ = cheerio.load(html);
@@ -24,8 +24,8 @@ const scarping = async () => {
   return data;
 };
 
-async function run() {
-  const result = await scarping();
+async function run(country) {
+  const result = await scarping(country);
   return result;
 }
 export default run;

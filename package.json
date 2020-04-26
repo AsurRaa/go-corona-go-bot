@@ -19,6 +19,7 @@
     "moment": "^2.24.0",
     "request": "^2.88.2",
     "telegraf": "^3.37.0",
+    "telegraf-inline-menu": "^4.0.1",
     "voca": "^1.4.0"
   },
   "devDependencies": {
