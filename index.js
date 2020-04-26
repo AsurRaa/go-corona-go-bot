@@ -1,15 +1,7 @@
 import Telegraf from "telegraf";
 import Scraping from "./scraping";
-import voca from "voca";
-import cheerio from "cheerio";
-import words from "voca/words";
-import moment, { locale } from "moment";
+import { day, today } from "./utils/todayKH";
 require("dotenv").config();
-const request = require("request");
-
-const today = moment(new Date(), locale("km")).format("ll");
-const todayWithDay = moment(new Date(), locale("km")).format("LLLL");
-const day = voca(todayWithDay).chain().lowerCase().words().value();
 
 const message = `ព័ត៌មានផ្លូវការ អំពី Covid-19 នៅកម្ពុជា 
 គិតត្រឹម "ថ្ងែ${day[0]}, ${today}"
@@ -19,7 +11,6 @@ const message = `ព័ត៌មានផ្លូវការ អំពី Covi
 `;
 
 const main = async () => {
-  // run get data
   console.log("getting data", await Scraping());
 
   const bot = new Telegraf(process.env.BOT_TOKEN);
