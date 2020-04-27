@@ -41,6 +41,11 @@ const main = async () => {
     ];
   });
 
+  // bot.command("game", (ctx) => {
+  //   console.log("context rendering", ctx.chat.id);
+  //   let messageId = ctx.chat.id;
+  //   return ctx.telegram.sendGame();
+  // });
   // bot.use((ctx) => console.log("context mother fucker", ctx.message));
 
   // bot.help((ctx) => ctx.reply("Send me a sticker"));
