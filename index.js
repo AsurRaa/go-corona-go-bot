@@ -40,30 +40,33 @@ const main = async () => {
       ctx.reply("Noobb purom mother fucker"),
     ];
   });
-  bot.help((ctx) => ctx.reply("Send me a sticker"));
-  bot.on("sticker", (ctx) => ctx.reply("👍"));
-  bot.hears("hi", (ctx) => ctx.reply("Hey there"));
-  bot.command("covid", (ctx) => ctx.reply("hi from covid"));
 
-  bot.command("lyhour", (ctx) => console.log("context from command", ctx));
+  // bot.use((ctx) => console.log("context mother fucker", ctx.message));
 
-  bot.hears("Corona", (ctx) => ctx.reply(message));
-  bot.command("Corona", (ctx) => ctx.reply(message));
+  // bot.help((ctx) => ctx.reply("Send me a sticker"));
+  // bot.on("sticker", (ctx) => ctx.reply("🖕"));
+  // bot.hears("hi", (ctx) => ctx.reply("Hey there"));
+  // bot.command("covid", (ctx) => ctx.reply("hi from covid"));
 
-  const menu = new TelegrafInlineMenu((ctx) => `Hey ${ctx.from.first_name}!`);
-  menu.setCommand("menu");
-  menu.simpleButton("Show CODVID-19 Cases in Cambodia Today", "a", {
-    // doFunc: (ctx) => ctx.reply("As am I!"),
-    doFunc: (ctx) => ctx.reply(message),
-  });
-  menu.simpleButton("Another Country", "b", {
-    doFunc: (ctx) => {
-      return ctx.hears(country), ctx.reply(renderMessage(country));
-    },
-  });
+  // bot.command("lyhour", (ctx) => console.log("context from command", ctx));
 
-  bot.use(menu.init());
-  bot.startPolling();
+  // bot.hears("Corona", (ctx) => ctx.reply(message));
+  // bot.command("Corona", (ctx) => ctx.reply(message));
+  // bot.hears("game", (ctx) => ctx.reply("hi"));
+  // const menu = new TelegrafInlineMenu((ctx) => `Hey ${ctx.from.first_name}!`);
+  // menu.setCommand("menu");
+  // menu.simpleButton("Show CODVID-19 Cases in Cambodia Today", "a", {
+  //   // doFunc: (ctx) => ctx.reply("As am I!"),
+  //   doFunc: (ctx) => ctx.reply(message),
+  // });
+  // menu.simpleButton("Another Country", "b", {
+  //   doFunc: (ctx) => {
+  //     return ctx.hears(country), ctx.reply(renderMessage(country));
+  //   },
+  // });
+
+  // bot.use(menu.init());
+  // bot.startPolling();
   bot.launch();
 
   console.log(color.red("bot is starting..."));
