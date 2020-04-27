@@ -34,13 +34,18 @@ const main = async () => {
       webhookReply: true,
     },
   });
-  bot.start((ctx) => ctx.reply("Welcome"));
+  bot.start((ctx) => {
+    return [
+      ctx.replyWithPhoto("https://imgflip.com/i/3y9wn6"),
+      ctx.reply("Noobb purom mother fucker"),
+    ];
+  });
   bot.help((ctx) => ctx.reply("Send me a sticker"));
   bot.on("sticker", (ctx) => ctx.reply("👍"));
   bot.hears("hi", (ctx) => ctx.reply("Hey there"));
   bot.command("covid", (ctx) => ctx.reply("hi from covid"));
 
-  bot.command("lyhour", (ctx) => console.log("context", ctx));
+  bot.command("lyhour", (ctx) => console.log("context from command", ctx));
 
   bot.hears("Corona", (ctx) => ctx.reply(message));
   bot.command("Corona", (ctx) => ctx.reply(message));
