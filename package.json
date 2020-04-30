@@ -6,8 +6,8 @@
   "author": "LyhourChhen <ukamilove66@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --ext js --exec babel-node index.js",
-    "test": "nodemon --ext js --exec babel-node scraping.js"
+    "start": "npx nodemon --ext js --exec babel-node index.js",
+    "test": "npx nodemon --ext js --exec babel-node scraping.js"
   },
   "dependencies": {
     "axios": "^0.19.2",
