@@ -9,6 +9,7 @@
  - [ ] localization as English and Khmer.
  - [ ] Also get data with Another Country with query inline.
  - [ ] Notify when data is Change.
+ - [ ] Setting webhook + with admin-site (small react app)
  - [ ] Set Secret Admin user to forward news through bot.
  - [ ] Alert people to take care themself ! 
  
