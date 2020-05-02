@@ -1,9 +1,10 @@
 import Telegraf from "telegraf";
+
 import color from "colors";
 import Scraping from "./scraping";
 import { day, today } from "./utils/todayKH";
 import moment from "moment";
-
+const Markup = require("telegraf/markup");
 const TelegrafInlineMenu = require("telegraf-inline-menu");
 require("dotenv").config();
 
@@ -34,21 +35,17 @@ const main = async () => {
       webhookReply: true,
     },
   });
+
   bot.start((ctx) => {
     return [
-      ctx.replyWithPhoto("https://imgflip.com/i/3y9wn6"),
-      ctx.reply("Noobb purom mother fucker"),
+      // ctx.replyWithPhoto("https://imgflip.com/i/3y9wn6"),
+      ctx.replyWithMarkdown(
+        `Gretting ${ctx.from.first_name}! welcome to COVID-19 cases alert which happened in Cambodia.\nThis bot aim to provide to data of COVID-19 Through telegram.\n*Powered by Asurra Technology*.\nHere some help !!!\n/menu => Show menu of the bot.`
+      ),
+      ctx.reply("👍"),
     ];
   });
 
-  // bot.command("game", (ctx) => {
-  //   console.log("context rendering", ctx.chat.id);
-  //   let messageId = ctx.chat.id;
-  //   return ctx.telegram.sendGame();
-  // });
-  // bot.use((ctx) => console.log("context mother fucker", ctx.message));
-
-  // bot.help((ctx) => ctx.reply("Send me a sticker"));
   bot.on("sticker", (ctx) => {
     let chatId = ctx.chat.id;
     return [
@@ -58,30 +55,30 @@ const main = async () => {
       ),
     ];
   });
-  // bot.hears("hi", (ctx) => ctx.reply("Hey there"));
-  // bot.command("covid", (ctx) => ctx.reply("hi from covid"));
 
-  // bot.command("lyhour", (ctx) => console.log("context from command", ctx));
-
-  // bot.hears("Corona", (ctx) => ctx.reply(message));
-  // bot.command("Corona", (ctx) => ctx.reply(message));
-  // bot.hears("game", (ctx) => ctx.reply("hi"));
+  // With middleware
   const menu = new TelegrafInlineMenu((ctx) => `Hey ${ctx.from.first_name}!`);
   menu.setCommand("menu");
-  menu.simpleButton("Show CODVID-19 Cases in Cambodia Today", "a", {
-    // doFunc: (ctx) => ctx.reply("As am I!"),
+
+  menu.simpleButton("Cambodia", "a", {
     doFunc: (ctx) => ctx.reply(message),
   });
   menu.simpleButton("Another Country", "b", {
-    doFunc: (ctx) => {
-      return ctx.hears(country), ctx.reply(renderMessage(country));
-    },
+    doFunc: (ctx) => ctx.reply("As am I!"),
   });
 
-  bot.use(menu.init());
-  bot.startPolling();
-  bot.launch();
+  // test
+  bot.command("test", (ctx) =>
+    ctx.reply(
+      "Hi!",
+      Markup.inlineKeyboard([Markup.callbackButton("text", "my-callback-data")])
+    )
+  );
 
+  bot.action("my-callback-data", (ctx) => ctx.answerCbQuery("lalalal"));
+
+  bot.use(menu.init());
+  bot.launch();
   console.log(color.red("bot is starting..."));
 };
 
