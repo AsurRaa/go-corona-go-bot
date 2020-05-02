@@ -11,3 +11,6 @@
  - [ ] Notify when data is Change.
  - [ ] Set Secret Admin user to forward news through bot.
  - [ ] Alert people to take care themself ! 
+ 
+ 
+**[@LyhourChhen](t.me/lyhourchhen)**
