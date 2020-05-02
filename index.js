@@ -8,6 +8,41 @@ const Markup = require("telegraf/markup");
 const TelegrafInlineMenu = require("telegraf-inline-menu");
 require("dotenv").config();
 
+const testString = `
+// =>
+//                                 ▲
+//                                 │
+//                         • • • • • • • • •
+//                     • •         │         • •
+//                 • •             │             • •
+//               •                 │                 •
+//             •                   │                   •
+//           •                     │                     •
+//         •                       │                       •
+//         •                       │                       •
+//       •                         │                         •
+//       •                         │                         •
+//     •                           │                           •
+//     •                           │                           •
+//     •                           │                           •
+//     •                           │                           •
+//     •                           │                           •
+//     •                           │                           •
+//     •                           │                           •
+//     •                           │                           •
+//       •                         │                         •
+//       •                         │                         •
+//         •                       │                       •
+//         •                       │                       •
+//           •                     │                     •
+//             •                   │                   •
+//               •                 │                 •
+//                 • •             │             • •
+//                     • •         │         • •
+//                         • • • • • • • • •
+//                                 │
+`;
+
 const main = async () => {
   let country;
   let data = await Scraping("Cambodia");
@@ -74,6 +109,18 @@ const main = async () => {
       Markup.inlineKeyboard([Markup.callbackButton("text", "my-callback-data")])
     )
   );
+
+  bot.command("graph", (ctx) => {
+    ctx.reply(testString);
+  });
+
+  bot.command("hook", (ctx) => {
+    console.log(
+      "rebder context",
+      ctx.telegram.setWebhook("http://localhost:3000/")
+    );
+    return ctx.reply(ctx.botInfo);
+  });
 
   bot.action("my-callback-data", (ctx) => ctx.answerCbQuery("lalalal"));
 
