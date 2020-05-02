@@ -5,6 +5,7 @@
 
 **Todo-List**
  - [x] Get data from scraping. 
+ - [ ] Connect with wit.ai just for some small natural-language processing.
  - [ ] Funtional bot which let user see data in Cambodia about COVID-19.
  - [ ] localization as English and Khmer.
  - [ ] Also get data with Another Country with query inline.
